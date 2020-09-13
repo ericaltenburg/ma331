@@ -1,0 +1,176 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}\par}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME}}
+\chead{\textbf{{\COURSE} HW\HWNUM}}
+\rhead{\today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Eric Altenburg}  % your name
+\newcommand\COURSE{MA-331}
+\newcommand\HWNUM{5}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+
+\textit{Pledge: I pledge my honor that I have abided by the Stevens Honor System.} -Eric Altenburg
+
+\question{9.37}{Page 559}
+
+	\part{a}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Stratum & Numbers Allowed & Numbers Not Allowed & Sampled Total\\
+			\hline
+			Small & 51 & 6 & 57\\
+			\hline
+			Medium & 12 & 5 & 17\\
+			\hline
+			Large & 4 & 1 & 5\\
+			\hline
+			Total & 67 & 12 & 79\\
+			\hline
+		\end{tabular}\par
+		From this table we can see that each claim, be it small, medium, or large, can either be allowed or not allowed after auditing. In this case, after sampling 79 claims, 67 were allowed while 12 were not.\par
+		
+	\part{b}
+		Small: $\frac{6}{57}=0.105 = 10.5\%$\par
+		Medium: $\frac{5}{17}=0.294=29.4\%$\par
+		Large: $\frac{1}{5} = 0.20 = 20\%$ \par
+		
+	\part{c}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Stratum & Numbers Allowed & Numbers Not Allowed & Sampled Total\\
+			\hline
+			Small & 51 & 6 & 57\\
+			\hline
+			Medium and Large & 16 & 6 & 22\\
+			\hline
+			Total & 67 & 12 & 79\\
+			\hline
+		\end{tabular}\par
+		The reason for the medium and large strata being combined is due to the large's "Numbers Not Allowed" being too small.\par
+		
+	\part{d}
+		$H_{0}:$ There is no association among the claim size and whether the claim will be allowed.\par
+		
+	\part{e}
+		Expected Counts\par
+		\begin{tabular}{|c|c|c|}
+			\hline
+			 & Numbers Allowed & Numbers Not Allowed\\
+			\hline
+			Small & 48.34 & 8.66\\
+			\hline
+			Medium and Large & 18.66 & 3.34\\
+			\hline
+		\end{tabular} \par
+		
+		$df = 1$\par
+		
+		$\chi^{2} = \sum \frac{(Observed-Expected)^{2}}{Expected} = 3.46$\par
+		$p-value = 0.063$\par
+		Since the p-value is greater than the significance level of 0.05, we accept the null hypothesis stating that there is no association among the claim size and whether the claim will be allowed.\pagebreak
+		
+
+\question{9.38}{Page 560}
+	\part{a}
+		Small: \par
+		$\frac{6}{57}=0.105$\par
+		$0.105 * 3342 = 351.79 \approx 350 \; Not \; Allowed$\par
+		
+		Medium: \par
+		$\frac{5}{17}=0.294$\par
+		$0.294 * 246 = 72.35 \approx 72 \; Not \; Allowed$\par
+		
+		Large: \par
+		$\frac{1}{5} = 0.2$\par
+		$0.2*58 = 11.6 \approx 11 \; Not \; Allowed$\par
+	\part{b}
+		$SE = \sqrt{\frac{p(1-p)}{n}}$
+		$SE_{Small}=\sqrt{\frac{0.105 * 0.895}{57}}=0.0406$\par
+		$SE_{Medium}=\sqrt{\frac{0.294 * 0.706}{17}}= 0.1104$\par
+		$SE_{Large}= \sqrt{\frac{0.2 * 0.8}{5}}=0.179$\par
+		For 95\% CI, $z=1.96$.\par
+		$Small=1.96 * 0.0406 = 0.08$\par
+		$Medium=1.96*0.1104=0.217$\par
+		$Large= 1.96*0.179=0.35$
+	
+
+\question{9.50}{Page 562}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Groups & Count & Probability & Expected Count\\
+		\hline
+		$x \leq -0.6$ & 139 & 0.2743 & 137.15\\
+		\hline
+		$-0.6 < x \leq -0.1$ & 102 & 0.1859 & 92.95\\
+		\hline
+		$-0.1 < x \leq 0.1$ & 41 & 0.0796 & 39.8\\
+		\hline
+		$0.1 < x \leq 0.6$ & 78 & 0.1859 & 92.95\\
+		\hline
+		$x > 0.6$ & 140 & 0.2743 & 137.15\\
+		\hline
+	\end{tabular}\par
+	$df = 4$ \par
+	$\chi^{2} = 3.406$\par
+	$p-value=0.4923$\par
+	From this, we conclude that the p-value is greater than the significance level of 0.05 which results in the failure to reject the null hypothesis which means the distribution is normal.\pagebreak
+	
+	
+\question{9.51}{Page 562}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Group & Count & Probability & Expected Count\\
+		\hline
+		$x \leq -0.7$ & 112 & 0.2420 & 121\\
+		\hline
+		$-0.7 < x \leq -0.2$ & 82 & 0.1787 & 89.35\\
+		\hline
+		$-0.2 < x \leq 0.2$ & 77 & 0.1586 & 79.3\\
+		\hline
+		$0.2 < x \leq 0.7$ & 111 & 0.1787 & 89.35\\
+		\hline
+		$x > 0.7$ & 118 & 0.2420 & 121\\
+		\hline
+	\end{tabular}\par
+	$df=4$\par
+	$\chi^{2} = 6.661$\par
+	$p-value=0.1549$\par
+	From this, we conclude that the p-value is greater than the significance level of 0.05 which results in the failure to reject the null hypothesis which means the distribution is normal.
+
+
+\end{document}

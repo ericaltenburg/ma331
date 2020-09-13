@@ -1,0 +1,173 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME}}
+\chead{\textbf{{\COURSE} HW\HWNUM}}
+\rhead{\today}
+\begin{document}\raggedright
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Eric Altenburg}  % your name
+\newcommand\COURSE{MA-331}
+\newcommand\HWNUM{4}              % the homework number
+%Section B==============Put your answers to the questions below here=======================
+
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+
+\begin{center}
+	\textbf{Pledge:} \textit{I pledge my honor that I have abided by the Stevens Honor System.}
+\end{center}
+
+\question{7.71}{p. 468} 
+
+\part{a}\\
+	% Missing the graphical plot%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	There does not seem to be any outliers or any skewness to the samples, therefore, the use of t-procedures is appropriate in this case; however, they do not seem to be normal. \\
+
+\part{b}\\
+	\begin{tabular}{c|c|c|c}
+		& Sample size & Mean & Std. Dev. \\
+		\hline
+		Neutral & 14 & 0.571 & 0.730 \\
+		\hline
+		Sad & 17 & 2.12 & 1.24
+	\end{tabular}
+
+\part{c}\\
+	Consider $\mu_{1}$ to be the mean of the Neutral group, and $\mu_{2}$ to be the mean of the Sad group.\\
+	$H_{0} : \mu_{1} = \mu_{2}$\\
+	$H_{a} : \mu_{1} < \mu_{2}$\\
+
+\part{d}\\
+	\begin{align*}
+		Test\; Statistic &= \frac{0.571-2.118}{\sqrt{\frac{0.730^{2}}{14}-\frac{1.244^{2}}{17}}}\\
+		&= -4.30\\
+		df &= 26\\
+		p-value &= 0.0001
+	\end{align*}
+	From these results we can reject the null hypothesis accepting the alternative, the p-value is far smaller than the significance level of 0.05. Furthermore, one can say that there is a significant difference in mean price between the two groups.
+
+\part{e}\\
+	\begin{align*}
+		95\% \; CI &= (0.571-2.12) \pm t_{\alpha / 2} * \sqrt{\frac{0.730^{2}}{14}-\frac{1.244^{2}}{17}}
+	\end{align*}
+	For 95\% confidence interval: $(-2.285, -0.808)$
+
+\question{7.89}{p. 472}
+
+	\part{a}\\
+		Let $\mu_{1}$ is the mean of the Breast-fed group, and $\mu_{2}$ is the mean of the formula group.\\
+		$H_{0} : \mu_{1} = \mu_{2}$\\
+		$H_{a} : \mu_{1} > \mu_{2}$\\
+		\begin{align*}
+			s_{combined} &= \sqrt{ \frac{ 22*1.7^{2} + 18*1.8^{2}}{40} }\\
+			&= 1.7457\\
+			t &= \frac{13.3-12.4}{1.7457*\sqrt{\frac{1}{23}+\frac{1}{19}}}\\
+			&= 1.66
+		\end{align*}
+		With these, $p-value = 0.053$, therefore, if provided with a significant level of $\alpha = 0.05$, then it would be concluded that there is no difference between the mean hemoglobin found in breast-fed vs. formula infants. The null hypothesis would fail to be rejected.
+		
+	\part{b}\\
+		%\begin{align*}
+		%	95\% \; CI &= (13.3-12.4) \pm t_{\alpha / 2} * \sqrt{\frac{1.7^{2}}{23}-\frac{1.8^{2}}{19}}
+		%\end{align*}
+		For 95\% confidence interval: $(-0.2021, 2.0021)$
+	
+	\part{c}\\
+		The assumptions required to make part (a) and (b) work is that both samples are considered to be SRS and normal.
+
+
+\question{7.102}{p. 480}
+
+\part{a}\\
+		%$H_{0} : \mu_{1} = \mu_{2}$\\
+		%$H_{a} : \mu_{1} \ne \mu_{2}$\\
+		
+		%begin{align*}
+		%	s_{combined} &= \sqrt{ \frac{ 22*1.7^{2} + 18*1.8^{2}}{40} }\\
+		%	&= 1.7457\\
+		%	t &= \frac{13.3-12.4}{1.7457*\sqrt{\frac{1}{23}+\frac{1}{19}}}\\
+		%	&= 1.663
+		%\end{align*}
+		$F = \frac{s_{2}^{2}}{s_{1}^{2}} = \frac{9.1}{3.5} = 2.6$\\
+		
+\part{b}\\
+	$F(15, 10, 0.05) = 2.845$
+
+\part{c}\\
+	We accept $H_{0}$ as 2.6 $<$ 2.845, therefore, we can conclude that the two standard deviations are equal.
+
+\question{7.122}{p. 482}
+
+\part{a}\\
+	$\overline{x_{1}}=49.692$\\
+	$s_{1} = 2.3179$\\
+	$\overline{x_{2}}=50.545$\\
+	$s_{2} = 1.9244$\\
+	$df = 17$\\
+	$t = \frac{\overline{x}_{1} - \overline{x}_{2}} {\sqrt {\frac{s_{1}^{2}}{n_{1}}+\frac{s_{2}^{2}}{n_{2}}}} = -0.90$\\
+	$p-value=0.3831$
+
+\part{b}\\
+	$\overline{d}=-0.853$\\
+	$s = 1.2691 $\\
+	$t = \frac{ \overline{d} - \mu_{d} }{ \frac{ s_{d} }{\sqrt{n}} } = -2.13$\\
+	$p-value = 0.0625$
+	
+\part{c}\\
+	The calculated test statistic values and p-values are different between parts (a) and (b), therefore, this could lead to the accidental acceptance or rejection of $H_{0}$.
+	
+
+\question{8.71}{p. 524}
+
+\part{a}\\
+	$\hat{p}_{F} = \frac{48}{60} = 0.8$\\
+	$SE_{F} = \sqrt{ \frac{ 0.8*0.2) }{ 60 } } = 0.05164$\\
+	$\hat{p}_{M} = \frac{52}{132} = 0.\overline{39}$\\
+	$SE_{F} = \sqrt{ \frac{ 0.\overline{39}*0.\overline{60}) }{ 132 } } = 0.04252$
+	
+\part{b}\\
+	For 90\% confidence interval: $(0.2960, 0.5161)$\\
+	With this, one can assume that the mean difference of the ratio of male to female references falls between these two values.
+	
+\part{c}\\
+	$H_{0} : \hat{p}_{F} = \hat{p}_{M}$\\
+	$p = \frac{p_{F}*n_{F} + p_{M} * n){M}}{n_{F} + n_{M}} = 0.5101$\\
+	$SE = \sqrt{ p(1-p)(\frac{1}{n_{F}} + \frac{1}{n_{M}} } = 0.0778$\\
+	$z = \frac{ p_{F} - p_{M} }{SE} = 5.217$\\
+	$P(z > 5.21) \approx 0$
+	
+	We reject $H_{0}$ stating that there is a significant difference.
+
+
+\end{document}

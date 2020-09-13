@@ -1,0 +1,223 @@
+%=======================02-713 LaTeX template, following the 15-210 template==================
+%
+% You don't need to use LaTeX or this template, but you must turn your homework in as
+% a typeset PDF somehow.
+%
+% How to use:
+%    1. Update your information in section "A" below
+%    2. Write your answers in section "B" below. Precede answers for all 
+%       parts of a question with the command "\question{n}{desc}" where n is
+%       the question number and "desc" is a short, one-line description of 
+%       the problem. There is no need to restate the problem.
+%    3. If a question has multiple parts, precede the answer to part x with the
+%       command "\part{x}".
+%    4. If a problem asks you to design an algorithm, use the commands
+%       \algorithm, \correctness, \runtime to precede your discussion of the 
+%       description of the algorithm, its correctness, and its running time, respectively.
+%    5. You can include graphics by using the command \includegraphics{FILENAME}
+%
+\documentclass[11pt]{article}
+
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{13.6pt}
+
+
+\newcommand\question[2]{\vspace{.25in}\hrule\textbf{#1: #2}\vspace{.5em}\hrule\vspace{.10in}}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+
+
+\pagestyle{fancyplain}
+\lhead{\textbf{\NAME}}
+\chead{\textbf{MA-331 HW\HWNUM}}
+\rhead{\today}
+
+
+\begin{document}\raggedright
+
+
+%Section A==============Change the values below to match your information==================
+\newcommand\NAME{Eric Altenburg}  % your name
+\newcommand\HWNUM{3}              % the homework number
+
+
+%Section B==============Put your answers to the questions below here=======================
+% no need to restate the problem --- the graders know which problem is which,
+% but replacing "The First Problem" with a short phrase will help you remember
+% which problem this is when you read over your homeworks to study.
+
+\textbf{Pledge:} \textit{I pledge my honor that I have abided by the Stevens Honor System.}\par
+
+\question{1}{Find the moment estimator and maximum likelihood estimator for $\theta$ of the uniform distribution on (0, $\theta$).} 
+	\begin{align*}
+		E(X) = \int_{-\infty}^{\infty}xf(x)dx &= \int_{0}^{\theta} x*\frac{1}{\theta}dx\\
+		&= \frac{x^{2}}{2\theta} \bigg|_{0}^{\theta}\\
+		\overline{X} &= \frac{\theta}{2}\\
+		\hat{\theta} &= 2\overline{X}
+	\end{align*}
+	\begin{align*}
+		L(\theta, x) = \prod_{i=1}^{n} f(x_{i}, \theta) &= \prod_{i=1}^{n} \frac{1}{\theta}\\
+		&= \frac{1}{\theta^{n}} = \theta^{-n}\\
+		log(L(\theta, x) &= -nlog(\theta)\\
+		\frac{\partial logL(\theta,x)}{\partial \theta} &= 0\\
+		\frac{-n}{\theta} &= 0
+	\end{align*}
+	Likelihood estimator for $\theta$ is decreasing, therefore, for it to be maximized, $\theta$ must be the largest value in the sample x.
+	
+	
+\question{2}{Textbook Problems}
+	\part{6.17}
+		\part{a}
+			\begin{align*}
+				Margin\; of\; error = z_{.975} * \frac{\sigma}{\sqrt{n}} &= 1.96 * \frac{2.3}{\sqrt{340}}\\
+				&= 0.24
+			\end{align*}
+			\begin{align*}
+				CI = \overline{X} \pm z_{.975} *  \frac{\sigma}{\sqrt{n}} &= (5.156, 5.644)
+			\end{align*}
+		\part{b}
+			\begin{align*}
+				Margin\; of\; error = 0.321
+			\end{align*}
+			\begin{align*}
+				CI = (5.079, 5.721)
+			\end{align*}
+			The interval is wider than that of part a. Due to the higher CI, we need to increase the interval this way our confidence on whether or not the true population mean is within that interval is higher.\par
+			
+	\part{6.27}
+		\part{a}
+			\begin{align*}
+				CI &= 11.5 \pm 1.96 * \frac{8.3}{\sqrt{1200}}\\
+				&= (11.02, 11.97)
+			\end{align*}
+		\part{b}
+			No, because asking for individual times would not be appropriate for a CI because it is more so a range of values representing the average time spent.\\
+		\part{c}
+			It will still be a good approximation because the sample size is relatively large.\par
+	
+	\part{6.28}
+		\part{a}
+			$\overline{X}$ =  690 and $\sigma$ = 498\\
+		\part{b}
+			\begin{align*}
+				CI &= 690 \pm 1.96 * \frac{498}{\sqrt{1200}}\\
+				&= (661.82, 718.17)
+			\end{align*}
+		\part{c}
+			Another way one could have directly calculated this interval from the previous exercise would be to multiply the old one by 60.\par
+			
+	\part{6.58}
+		\part{a}
+			$H_{a}:\; \mu > \mu_{0}$\\
+			$P(Z>1.77)=0.038$\\
+		\part{b}
+			$H_{a}:\; \mu < \mu_{0}$\\
+			$P(Z<1.77)=0.962$\\
+		\part{c}
+			$H_{a}:\; \mu \neq \mu_{0}$\\
+			$P(|Z| \geq 1.77)=0.079$\par
+			
+	\part{6.59}
+		\part{a}
+			$H_{a}:\; \mu > \mu_{0}$\\
+			$P(Z>-1.69)=0.955$\\
+		\part{b}
+			$H_{a}:\; \mu < \mu_{0}$\\
+			$P(Z<-1.69)=0.046$\\
+		\part{c}
+			$H_{a}:\; \mu \neq \mu_{0}$\\
+			$P(|Z| \geq -1.69)=0.091$\par
+			
+	\part{6.71}
+		\part{a}
+			\begin{align*}
+				z &= \frac{127.8 - 115}{\frac{30}{\sqrt{25}}}\\
+				&= 2.13\\
+				P(Z>2.13)&=0.017\\
+			\end{align*}
+			Because the p-value has a value less than $\alpha$, we reject $H_{0}$ in that older students on average tend to have a higher SSHA score.\\
+		\part{b}
+			The bigger of the two assumptions made in part a was that this was a simple and random sample (SRS), whereas the assumption that it is a normal distribution will not matter too much so long as there are not any outliers or skewness to the sample.\par
+			
+	\part{6.73}
+		\part{a}
+			$H_{0}: \mu = 0 \;mpg$\\
+			$H_{a}: \mu \neq 0 \;mpg$\\
+		\part{b}
+			\begin{align*}
+				\overline{x} &= 2.73 		&		z&=\frac{2.73-0}{\frac{3}{\sqrt{20}}} \\
+						&			&		&= 4.069
+			\end{align*}
+			This results in an extremely small p-value (0.00005) and because of this, $H_{0}$ is rejected and so $\mu \neq 0$.\par
+			
+	\part{6.99}
+		\part{a}
+			\begin{align*}
+				\overline{x} &= 2453.7 		&		z&=\frac{2453.7-2403.7}{\frac{880}{\sqrt{100}}} \\
+						&			&		&= 0.57
+			\end{align*}
+			$P(Z>0.57)=0.284$\\
+		\part{b}
+			\begin{align*}
+				\overline{x} &= 2453.7 		&		z&=\frac{2453.7-2403.7}{\frac{880}{\sqrt{500}}} \\
+						&			&		&= 1.27
+			\end{align*}
+			$P(Z>1.27)=0.102$\\
+		\part{c}
+			\begin{align*}
+				\overline{x} &= 2453.7 		&		z&=\frac{2453.7-2403.7}{\frac{880}{\sqrt{2500}}} \\
+						&			&		&= 2.84
+			\end{align*}
+			$P(Z>2.84)=0.002$\par
+	
+	\part{6.120}
+		\part{a}
+			\begin{align*}
+				P(Type\; I\; Error) &= P(x=0 \cup x = 1 \cup x = 2)\\
+				&= 0.1 + 0.1 + 0.2\\
+				&= 0.4	
+			\end{align*}
+		\part{b}
+			\begin{align*}
+				P(Type\; II\; Error) &= P(x=3 \cup x=4 \cup x=5 \cup x=6)\\
+				&= 0.4
+			\end{align*}\par
+	
+	\part{7.22}
+		\part{a}
+			$df=15$\\
+		\part{b}	
+			$2.131 < t < 2.249$\\
+		\part{c}
+			$0.02<P<0.025$\\
+		\part{d}
+			5\%: Yes\\
+			1\%: No\\
+		\part{e}
+			 $p-values = 0.0241$\par
+	
+	\part{7.23}
+		\part{a}
+			$df=26$\\
+		\part{b}	
+			$1.706 < t < 2.056$\\
+		\part{c}
+			$0.05<P<0.1$\\
+		\part{d}
+			5\%: No\\
+			1\%: No\\
+		\part{e}
+			 $p-values = 0.0549$\\
+		
+\end{document}
